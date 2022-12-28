@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ListingController::class, 'index']);
 
-// Show Create List Form
 Route::get('/listing/create', [ListingController::class, 'create']);
-
+Route::get('/listing/edit/{listing}', [ListingController::class, 'edit']);
+Route::put('/listing/{listing}', [ListingController::class, 'update']);
 Route::post('/listing', [ListingController::class, 'store']);
+Route::delete('/listing/{listing}', [ListingController::class, 'destroy']);
 
 Route::get('/listing/{listing}', [ListingController::class, 'show']);
 
