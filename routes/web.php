@@ -31,13 +31,20 @@ Route::get('/listing/{listing}', [ListingController::class, 'show']);
 
 
 // Show Register Create Form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+// Show Login Form
+Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+// Show Register Form
 
 
 // Create User
 Route::post('/users', [UserController::class, 'store']);
 // Logout User
 Route::post('/logout', [UserController::class, 'logout']);
+
+// Login User
+Route::post('/users/login', [UserController::class, 'postLogin']);
+
 
 // Route::get('/hello', function () {
 //     return response('hello');
