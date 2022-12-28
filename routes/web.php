@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ListingController::class, 'index']);
 
-Route::get('/listing/create', [ListingController::class, 'create']);
-Route::get('/listing/edit/{listing}', [ListingController::class, 'edit']);
-Route::put('/listing/{listing}', [ListingController::class, 'update']);
-Route::post('/listing', [ListingController::class, 'store']);
-Route::delete('/listing/{listing}', [ListingController::class, 'destroy']);
+Route::get('/listing/create', [ListingController::class, 'create'])->middleware('auth');
+Route::get('/listing/edit/{listing}', [ListingController::class, 'edit'])->middleware('auth');
+Route::put('/listing/{listing}', [ListingController::class, 'update'])->middleware('auth');
+Route::post('/listing', [ListingController::class, 'store'])->middleware('auth');
+Route::delete('/listing/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
 Route::get('/listing/{listing}', [ListingController::class, 'show']);
 
@@ -33,7 +33,7 @@ Route::get('/listing/{listing}', [ListingController::class, 'show']);
 // Show Register Create Form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 // Show Login Form
-Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
 // Show Register Form
 
 
